@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-:root {    
+:root {
     /* Color Shades */
     --primary-1: #FAE3E1;
     --primary-2: #fa8e84;
@@ -10,4 +10,11 @@
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--primary-1);
+}
+p {
+    line-height: 1;
+}
+
+.required {
+    color: var(--primary-3);
 }

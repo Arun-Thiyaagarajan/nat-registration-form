@@ -9,7 +9,7 @@ import { InputFormComponent } from './input-form/input-form.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    InputFormComponent
+    InputFormComponent,
   ],
   imports: [
     BrowserModule,

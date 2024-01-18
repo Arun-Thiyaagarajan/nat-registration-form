@@ -1,28 +1,99 @@
-<div class="form-container bg-white p-4 rounded-3">
+<div class="form-container bg-white p-4 rounded-3 mb-2">
     <form>
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="fname" class="form-label">First Name</label>
-                <input type="text" id="fname" class="form-control">
+        <!-- PERSONAL DETAILS -->
+        <h5 class="mb-3">Personal Details</h5>
+        <hr>
+        <section class="personal-details mb-3">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="fname" class="form-label">First Name</label>
+                    <span class="required"> *</span>
+                    <input type="text" id="fname" class="form-control" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lname" class="form-label">Last Name</label>
+                    <span class="required"> *</span>
+                    <input type="text" id="lname" class="form-control" required>
+                </div>
             </div>
-            <div class="col-md-6 mb-3">
-                <label for="lname" class="form-label">Last Name</label>
-                <input type="text" id="lname" class="form-control">
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="hostel" class="form-label">Hostel</label>
+                    <span class="required"> *</span>
+                    <select class="form-select" id="hostel" required>
+                        <option selected disabled>Select</option>
+                        <option value="ke_hall">KE Hall</option>
+                        <option value="jonas_hall">Jonas Hall</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="roomNo" class="form-label">Room No.</label>
+                    <span class="required"> *</span>
+                    <input type="number" pattern="[0-9]*" inputmode="numeric" id="roomNo" class="form-control" required>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="hostel" class="form-label">Hostel</label>
-                <select class="form-select">
-                    <option selected disabled>Select</option>
-                    <option value="ke_hall">KE Hall</option>
-                    <option value="jonas_hall">Jonas Hall</option>
-                </select>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <span class="required"> *</span>
+                    <input type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" id="email"
+                        class="form-control" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="phone" class="form-label">Mobile</label>
+                    <span class="required"> *</span>
+                    <input type="tel" maxlength="10" pattern="[0-9]*" id="phone" class="form-control" required>
+                </div>
             </div>
-            <div class="col-md-6 mb-3">
-                <label for="roomNo" class="form-label">Room No.</label>
-                <input type="number" pattern="[0-9]*" inputmode="numeric" id="roomNo" class="form-control">
+        </section>
+
+        <!-- EVENT DETALILS -->
+        <h5 class="mb-3">Event Details</h5>
+        <hr>
+        <section class="event-details">
+
+            <div class="row">
+                <div class="col mb-3">
+                    <label class="form-label me-3">Food Type:</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="food-type" id="veg" checked>
+                        <label class="form-check-label" for="veg">Veg</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="food-type" id="non-veg">
+                        <label class="form-check-label" for="non-veg">Non-Veg</label>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <label class="form-label mb-3">What performance you like to do?</label>
+                    <span class="required"> *</span>
+                    @for (performance of performances; track $index) {
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="" [id]="performance.id">
+                        <label class="form-check-label" [for]="performance.id">
+                            {{performance.name}}
+                        </label>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col">
+                    <label for="others" class="form-label">If you chose others, Mention what perfomance you will do?</label>
+                    <input type="text" id="others" class="form-control">
+                </div>
+            </div>
+
+            <div class="d-grid">
+                <button class="btn btn-block btn-danger">Submit</button>
+            </div>
+
+        </section>
     </form>
 </div>
