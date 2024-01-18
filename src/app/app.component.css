@@ -2,7 +2,7 @@
     padding-block: 10px;
     
     display: grid;
-    gap: 5px;
+    gap: 8px;
 }
 
 @media (min-width: 992px) {
