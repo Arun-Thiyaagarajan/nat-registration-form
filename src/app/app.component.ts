@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormData } from './models/Form';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'nat-registration-form';
+  outputData?: FormData;
+
+  setOPData(data: FormData) {
+    this.outputData = {...data}
+  }
 }

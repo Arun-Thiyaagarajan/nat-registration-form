@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { FormData } from '../models/Form';
 
 @Component({
   selector: 'input-form',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './input-form.component.css'
 })
 export class InputFormComponent {
+  
   performances = [
     {
       id: "ke_singing",
@@ -40,4 +42,43 @@ export class InputFormComponent {
       name: "Not Interested",
     },
   ]
+
+  @Output()
+  outputFormData: EventEmitter<FormData> = new EventEmitter<FormData>();
+    
+  formData: FormData = {
+    firstName: "",
+    lastName: "",
+    hostel: "",
+    roomNo: 0,
+    email: "",
+    mobile: "",
+    foodType: "",
+    performances: [],
+    others: []
+  }
+
+  @ViewChild('fName') fName: ElementRef;
+  @ViewChild('lName') lName: ElementRef;
+  @ViewChild('hostel') hostel: ElementRef;
+  @ViewChild('roomNo') roomNo: ElementRef;
+  @ViewChild('email') email: ElementRef;
+  @ViewChild('mobile') mobile: ElementRef;
+  @ViewChild('foodType') foodType: ElementRef;
+  // @ViewChild('performance') performance: ElementRef;
+  @ViewChild('others') others: ElementRef;
+
+  saveData() {
+    this.formData.firstName = this.fName.nativeElement.value;
+    this.formData.lastName = this.lName.nativeElement.value;
+    this.formData.hostel = this.hostel.nativeElement.value;
+    this.formData.roomNo = this.roomNo.nativeElement.value;
+    this.formData.email = this.email.nativeElement.value;
+    this.formData.mobile = this.mobile.nativeElement.value;
+    this.formData.foodType = this.foodType.nativeElement.value;
+    // this.formData.performances = this.performance.nativeElement.value;
+    this.formData.others.push(this.others.nativeElement.value.split(','));
+
+    this.outputFormData.emit(this.formData)
+  }
 }

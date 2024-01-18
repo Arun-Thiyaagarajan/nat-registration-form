@@ -8,12 +8,12 @@
                 <div class="col-md-6 mb-3">
                     <label for="fname" class="form-label">First Name</label>
                     <span class="required"> *</span>
-                    <input type="text" id="fname" class="form-control" required>
+                    <input type="text" id="fname" class="form-control" #fName>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lname" class="form-label">Last Name</label>
                     <span class="required"> *</span>
-                    <input type="text" id="lname" class="form-control" required>
+                    <input type="text" id="lname" class="form-control" #lName>
                 </div>
             </div>
 
@@ -21,16 +21,16 @@
                 <div class="col-md-6 mb-3">
                     <label for="hostel" class="form-label">Hostel</label>
                     <span class="required"> *</span>
-                    <select class="form-select" id="hostel" required>
+                    <select class="form-select" id="hostel" #hostel>
                         <option selected disabled>Select</option>
-                        <option value="ke_hall">KE Hall</option>
-                        <option value="jonas_hall">Jonas Hall</option>
+                        <option value="KE Hall">KE Hall</option>
+                        <option value="Jonas Hall">Jonas Hall</option>
                     </select>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="roomNo" class="form-label">Room No.</label>
                     <span class="required"> *</span>
-                    <input type="number" pattern="[0-9]*" inputmode="numeric" id="roomNo" class="form-control" required>
+                    <input type="number" pattern="[0-9]*" inputmode="numeric" id="roomNo" class="form-control" #roomNo>
                 </div>
             </div>
 
@@ -39,12 +39,12 @@
                     <label for="email" class="form-label">Email</label>
                     <span class="required"> *</span>
                     <input type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" id="email"
-                        class="form-control" required>
+                        class="form-control" #email>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="phone" class="form-label">Mobile</label>
                     <span class="required"> *</span>
-                    <input type="tel" maxlength="10" pattern="[0-9]*" id="phone" class="form-control" required>
+                    <input type="tel" maxlength="10" pattern="[0-9]*" id="phone" class="form-control" #mobile>
                 </div>
             </div>
         </section>
@@ -58,11 +58,11 @@
                 <div class="col mb-3">
                     <label class="form-label me-3">Food Type:</label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="food-type" id="veg" checked>
+                        <input class="form-check-input" type="radio" value="Veg" name="food-type" id="veg" checked #foodType>
                         <label class="form-check-label" for="veg">Veg</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="food-type" id="non-veg">
+                        <input class="form-check-input" type="radio" value="Non veg" name="food-type" id="non-veg" #foodType>
                         <label class="form-check-label" for="non-veg">Non-Veg</label>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                     <span class="required"> *</span>
                     @for (performance of performances; track $index) {
                     <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" value="" [id]="performance.id">
+                        <input class="form-check-input" type="checkbox" [id]="performance.id" #performances>
                         <label class="form-check-label" [for]="performance.id">
                             {{performance.name}}
                         </label>
@@ -85,15 +85,14 @@
 
             <div class="row mb-4">
                 <div class="col">
-                    <label for="others" class="form-label">If you chose others, Mention what perfomance you will do?</label>
-                    <input type="text" id="others" class="form-control">
+                    <label for="others" class="form-label">If you chose "Others", Mention what perfomance you will do?</label>
+                    <input type="text" id="others" placeholder="Stand up comedy, Magic Show,..." class="form-control" #others>
                 </div>
             </div>
 
             <div class="d-grid">
-                <button class="btn btn-block btn-danger">Submit</button>
+                <button type="button" class="btn btn-block btn-danger" (click)="saveData()">Submit</button>
             </div>
-
         </section>
     </form>
 </div>
