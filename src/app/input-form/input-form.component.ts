@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormData } from '../models/Form';
 
 @Component({
@@ -8,7 +8,7 @@ import { FormData } from '../models/Form';
 })
 export class InputFormComponent {
   
-  performances = [
+  performancesList = [
     {
       id: "ke_singing",
       name: "KE Hall Singing",
@@ -45,7 +45,7 @@ export class InputFormComponent {
 
   @Output()
   outputFormData: EventEmitter<FormData> = new EventEmitter<FormData>();
-    
+  
   formData: FormData = {
     firstName: "",
     lastName: "",
@@ -65,9 +65,9 @@ export class InputFormComponent {
   @ViewChild('email') email: ElementRef;
   @ViewChild('mobile') mobile: ElementRef;
   @ViewChild('foodType') foodType: ElementRef;
-  // @ViewChild('performance') performance: ElementRef;
+  @ViewChildren('performances', {read: ElementRef}) performances: QueryList<ElementRef>;
   @ViewChild('others') others: ElementRef;
-
+  
   saveData() {
     this.formData.firstName = this.fName.nativeElement.value;
     this.formData.lastName = this.lName.nativeElement.value;
@@ -77,8 +77,12 @@ export class InputFormComponent {
     this.formData.mobile = this.mobile.nativeElement.value;
     this.formData.foodType = this.foodType.nativeElement.value;
     this.formData.others = this.others.nativeElement.value;
-    // this.formData.performances = this.performance.nativeElement.value;
-    // this.formData.others.push(this.others.nativeElement.value.split(','));
+
+    const checkedPerformances = this.performances.filter(checked => checked.nativeElement.checked)
+    
+    checkedPerformances.map((p) => {
+      this.formData.performances.push(p.nativeElement.value)
+    })    
 
     this.outputFormData.emit(this.formData)
   }

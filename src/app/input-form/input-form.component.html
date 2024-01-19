@@ -8,12 +8,12 @@
                 <div class="col-md-6 mb-3">
                     <label for="fname" class="form-label">First Name</label>
                     <span class="required"> *</span>
-                    <input type="text" id="fname" class="form-control" #fName>
+                    <input type="text" id="fname" class="form-control" #fName required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lname" class="form-label">Last Name</label>
                     <span class="required"> *</span>
-                    <input type="text" id="lname" class="form-control" #lName>
+                    <input type="text" id="lname" class="form-control" #lName required>
                 </div>
             </div>
 
@@ -21,7 +21,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="hostel" class="form-label">Hostel</label>
                     <span class="required"> *</span>
-                    <select class="form-select" id="hostel" #hostel>
+                    <select class="form-select" id="hostel" #hostel required>
                         <option selected disabled>Select</option>
                         <option value="KE Hall">KE Hall</option>
                         <option value="Jonas Hall">Jonas Hall</option>
@@ -30,7 +30,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="roomNo" class="form-label">Room No.</label>
                     <span class="required"> *</span>
-                    <input type="number" pattern="[0-9]*" inputmode="numeric" id="roomNo" class="form-control" #roomNo>
+                    <input type="number" pattern="[0-9]*" inputmode="numeric" id="roomNo" class="form-control" #roomNo required>
                 </div>
             </div>
 
@@ -38,13 +38,12 @@
                 <div class="col-md-6 mb-3">
                     <label for="email" class="form-label">Email</label>
                     <span class="required"> *</span>
-                    <input type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" id="email"
-                        class="form-control" #email>
+                    <input type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" id="email" class="form-control" #email required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="phone" class="form-label">Mobile</label>
                     <span class="required"> *</span>
-                    <input type="tel" maxlength="10" pattern="[0-9]*" id="phone" class="form-control" #mobile>
+                    <input type="tel" maxlength="10" pattern="[0-9]*" id="phone" class="form-control" #mobile required>
                 </div>
             </div>
         </section>
@@ -58,11 +57,11 @@
                 <div class="col mb-3">
                     <label class="form-label me-3">Food Type:</label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" value="Veg" name="food-type" id="veg" checked #foodType>
+                        <input class="form-check-input" type="radio" value="Veg" name="food-type" id="veg" checked #foodType required>
                         <label class="form-check-label" for="veg">Veg</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" value="Non veg" name="food-type" id="non-veg" #foodType>
+                        <input class="form-check-input" type="radio" value="Non veg" name="food-type" id="non-veg" #foodType required>
                         <label class="form-check-label" for="non-veg">Non-Veg</label>
                     </div>
                 </div>
@@ -72,9 +71,9 @@
                 <div class="col-12 mb-3">
                     <label class="form-label mb-3">What performance you like to do?</label>
                     <span class="required"> *</span>
-                    @for (performance of performances; track $index) {
+                    @for (performance of performancesList; track $index) {
                     <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" [id]="performance.id" #performances>
+                        <input class="form-check-input" type="checkbox" [value]="performance.name" [id]="performance.id" #performances>
                         <label class="form-check-label" [for]="performance.id">
                             {{performance.name}}
                         </label>
