@@ -7,5 +7,5 @@ export class FormData {
     mobile: string;
     foodType: string;
     performances: string[];
-    others?: string[];
+    others?: string;
 }

@@ -55,7 +55,7 @@ export class InputFormComponent {
     mobile: "",
     foodType: "",
     performances: [],
-    others: []
+    others: "",
   }
 
   @ViewChild('fName') fName: ElementRef;
@@ -76,8 +76,9 @@ export class InputFormComponent {
     this.formData.email = this.email.nativeElement.value;
     this.formData.mobile = this.mobile.nativeElement.value;
     this.formData.foodType = this.foodType.nativeElement.value;
+    this.formData.others = this.others.nativeElement.value;
     // this.formData.performances = this.performance.nativeElement.value;
-    this.formData.others.push(this.others.nativeElement.value.split(','));
+    // this.formData.others.push(this.others.nativeElement.value.split(','));
 
     this.outputFormData.emit(this.formData)
   }
